@@ -37,14 +37,18 @@
   },
   "devDependencies": {
     "@theia/cli": "1.67.0",
-    "electron": "38.4.0"
+    "electron": "38.4.0",
+    "electron-builder": "^25.1.8"
   },
 "scripts": {
     "bundle": "yarn run rebuild && yarn run download:plugins && theia build --mode development",
     "rebuild": "theia rebuild:electron --cacheRoot ..",
     "start": "theia start --plugins=local-dir:plugins",
     "watch": "yarn run rebuild && yarn run download:plugins && theia build --watch --mode development",
-    "download:plugins": "theia download:plugins"
+    "download:plugins": "theia download:plugins",
+    "package": "yarn bundle && electron-builder --mac --dir",
+    "package:dmg": "yarn bundle && electron-builder --mac dmg",
+    "package:dist": "yarn bundle && electron-builder --mac"
 },
   "theiaPluginsDir": "plugins",
   "theiaPlugins": {
@@ -104,11 +108,11 @@
     "appId": "com.deepfates.folio",
     "productName": "Folio",
     "directories": {
-      "buildResources": "resources"
+      "buildResources": "electron-app/resources"
     },
     "mac": {
       "category": "public.app-category.developer-tools",
-      "icon": "resources/icon.png",
+      "icon": "electron-app/resources/icon.icns",
       "target": [
         "dmg",
         "zip"

@@ -124,3 +124,63 @@
     border-radius: 4px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
+
+/* ========================================
+   Sidebar Slide-In Animations
+   Smooth entrance for Claude & Navigator
+   ======================================== */
+
+/* Keyframes for left sidebar (Claude) */
+@keyframes slideInFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Keyframes for right sidebar (Navigator) */
+@keyframes slideInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Left side panel content animation */
+#theia-left-content-panel>.p-Widget,
+#theia-left-side-panel>.p-Widget {
+    animation: slideInFromLeft 0.35s ease-out;
+}
+
+/* Right side panel content animation */
+#theia-right-content-panel>.p-Widget,
+#theia-right-side-panel>.p-Widget {
+    animation: slideInFromRight 0.35s ease-out;
+}
+
+/* Bottom panel also gets a nice fade-up */
+@keyframes slideInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#theia-bottom-content-panel>.p-Widget {
+    animation: slideInFromBottom 0.3s ease-out;
+}
