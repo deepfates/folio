@@ -1,0 +1,90 @@
+{
+  "private": true,
+  "name": "electron-app",
+  "version": "0.0.0",
+  "main": "lib/backend/electron-main.js",
+  "dependencies": {
+    "@theia/bulk-edit": "1.67.0",
+    "@theia/core": "1.67.0",
+    "@theia/editor": "1.67.0",
+    "@theia/editor-preview": "1.67.0",
+    "@theia/electron": "1.67.0",
+    "@theia/file-search": "1.67.0",
+    "@theia/filesystem": "1.67.0",
+    "@theia/keymaps": "1.67.0",
+    "@theia/markers": "1.67.0",
+    "@theia/messages": "1.67.0",
+    "@theia/monaco": "1.67.0",
+    "@theia/navigator": "1.67.0",
+    "@theia/outline-view": "1.67.0",
+    "@theia/plugin": "1.67.0",
+    "@theia/plugin-ext-vscode": "1.67.0",
+    "@theia/preview": "1.67.0",
+    "@theia/process": "1.67.0",
+    "@theia/terminal": "1.67.0",
+    "@theia/timeline": "1.67.0",
+    "@theia/userstorage": "1.67.0",
+    "@theia/vsx-registry": "1.67.0",
+    "@theia/workspace": "1.67.0",
+    "folio": "0.0.0"
+  },
+  "devDependencies": {
+    "@theia/cli": "1.67.0",
+    "electron": "38.4.0"
+  },
+  "scripts": {
+    "bundle": "npm run rebuild && theia build --mode development",
+    "rebuild": "theia rebuild:electron --cacheRoot ..",
+    "start": "theia start",
+    "watch": "npm run rebuild && theia build --watch --mode development"
+  },
+  "theiaPluginsDir": "plugins",
+  "theiaPlugins": {
+    "vscode.git": "https://open-vsx.org/api/vscode/git/1.95.3/file/vscode.git-1.95.3.vsix",
+    "vscode.merge-conflict": "https://open-vsx.org/api/vscode/merge-conflict/1.95.3/file/vscode.merge-conflict-1.95.3.vsix",
+    "vscode.configuration-editing": "https://open-vsx.org/api/vscode/configuration-editing/1.95.3/file/vscode.configuration-editing-1.95.3.vsix",
+    "vscode.search-result": "https://open-vsx.org/api/vscode/search-result/1.95.3/file/vscode.search-result-1.95.3.vsix",
+    "vscode.css": "https://open-vsx.org/api/vscode/css/1.95.3/file/vscode.css-1.95.3.vsix",
+    "vscode.css-language-features": "https://open-vsx.org/api/vscode/css-language-features/1.95.3/file/vscode.css-language-features-1.95.3.vsix",
+    "vscode.html": "https://open-vsx.org/api/vscode/html/1.95.3/file/vscode.html-1.95.3.vsix",
+    "vscode.html-language-features": "https://open-vsx.org/api/vscode/html-language-features/1.95.3/file/vscode.html-language-features-1.95.3.vsix",
+    "vscode.javascript": "https://open-vsx.org/api/vscode/javascript/1.95.3/file/vscode.javascript-1.95.3.vsix",
+    "vscode.json": "https://open-vsx.org/api/vscode/json/1.95.3/file/vscode.json-1.95.3.vsix",
+    "vscode.json-language-features": "https://open-vsx.org/api/vscode/json-language-features/1.95.3/file/vscode.json-language-features-1.95.3.vsix",
+    "vscode.markdown": "https://open-vsx.org/api/vscode/markdown/1.95.3/file/vscode.markdown-1.95.3.vsix",
+    "vscode.markdown-language-features": "https://open-vsx.org/api/vscode/markdown-language-features/1.95.3/file/vscode.markdown-language-features-1.95.3.vsix",
+    "vscode.python": "https://open-vsx.org/api/vscode/python/1.95.3/file/vscode.python-1.95.3.vsix",
+    "vscode.typescript": "https://open-vsx.org/api/vscode/typescript/1.95.3/file/vscode.typescript-1.95.3.vsix",
+    "vscode.typescript-language-features": "https://open-vsx.org/api/vscode/typescript-language-features/1.95.3/file/vscode.typescript-language-features-1.95.3.vsix",
+    "vscode.xml": "https://open-vsx.org/api/vscode/xml/1.95.3/file/vscode.xml-1.95.3.vsix",
+    "DavidAnson.vscode-markdownlint": "https://open-vsx.org/api/DavidAnson/vscode-markdownlint/0.60.0/file/DavidAnson.vscode-markdownlint-0.60.0.vsix",
+    "zaaack.markdown-editor": "https://open-vsx.org/api/zaaack/markdown-editor/0.1.9/file/zaaack.markdown-editor-0.1.9.vsix",
+    "robole.marky-stats": "https://open-vsx.org/api/robole/marky-stats/0.11.0/file/robole.marky-stats-0.11.0.vsix",
+    "mechatroner.rainbow-csv": "https://open-vsx.org/api/mechatroner/rainbow-csv/3.3.0/file/mechatroner.rainbow-csv-3.3.0.vsix",
+    "castrogusttavo.symbols": "https://open-vsx.org/api/castrogusttavo/symbols/0.0.18/file/castrogusttavo.symbols-0.0.18.vsix",
+    "wilfriedago.vscode-symbols-icon-theme": "https://open-vsx.org/api/wilfriedago/vscode-symbols-icon-theme/0.0.1/file/wilfriedago.vscode-symbols-icon-theme-0.0.1.vsix",
+    "dez64ru.macos-modern-theme": "https://open-vsx.org/api/dez64ru/macos-modern-theme/2.3.18/file/dez64ru.macos-modern-theme-2.3.18.vsix",
+    "vscode.image-preview": "https://open-vsx.org/api/vscode/image-preview/1.70.2/file/vscode.image-preview-1.70.2.vsix",
+    "vscode.media-preview": "https://open-vsx.org/api/vscode/media-preview/1.95.3/file/vscode.media-preview-1.95.3.vsix",
+    "foam.foam-vscode": "https://open-vsx.org/api/foam/foam-vscode/0.29.1/file/foam.foam-vscode-0.29.1.vsix",
+    "Anthropic/claude-code": "https://open-vsx.org/api/Anthropic/claude-code/2.0.62/file/Anthropic.claude-code-2.0.62.vsix",
+    "jnahian/jnahian-claude-theme": "https://open-vsx.org/api/jnahian/jnahian-claude-theme/0.2.0/file/jnahian.jnahian-claude-theme-0.2.0.vsix",
+    "LaurentTreguier/vscode-simple-icons": "https://open-vsx.org/api/LaurentTreguier/vscode-simple-icons/1.16.0/file/LaurentTreguier.vscode-simple-icons-1.16.0.vsix"
+  },
+  "theia": {
+    "target": "electron",
+    "frontend": {
+      "config": {
+        "applicationName": "Folio",
+        "preferences": {
+          "workbench.colorTheme": "Claude Dark",
+          "workbench.iconTheme": "simple-icons",
+          "editor.wordWrap": "on",
+          "editor.autoSave": "afterDelay",
+          "editor.autoSaveDelay": 1000,
+          "window.titleBarStyle": "native"
+        }
+      }
+    }
+  }
+}
