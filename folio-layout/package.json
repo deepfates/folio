@@ -26,13 +26,15 @@
   "scripts": {
     "prepare": "npm run clean && npm run build",
     "clean": "rimraf lib",
-    "build": "tsc",
+    "build": "tsc && npm run copy-styles",
+    "copy-styles": "cp -r src/browser/style lib/browser/",
     "watch": "tsc -w",
     "test": "jest --config configs/jest.config.ts"
   },
   "theiaExtensions": [
     {
-      "frontend": "lib/browser/folio-frontend-module"
+      "frontend": "lib/browser/folio-frontend-module",
+      "frontendOnlyStyle": "src/browser/style/index.css"
     }
   ]
 }

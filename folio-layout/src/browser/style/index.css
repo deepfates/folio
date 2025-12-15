@@ -1,0 +1,126 @@
+/* ========================================
+   Folio Welcome Background
+   Shows when no editors are open
+   ======================================== */
+
+/* Main dock panel empty state - shows Folio branding */
+#theia-main-content-panel:empty::before,
+.theia-app-shell .theia-dock-panel:empty::before,
+#theia-main-content-panel>.p-DockPanel-widget:empty::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--theia-descriptionForeground);
+}
+
+/* Alternative: style the empty dock panel background with an SVG */
+#theia-main-content-panel,
+.theia-dock-panel {
+    background-color: var(--theia-editor-background);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 60 60' fill='none'%3E%3Cpath d='M12 8H32C34.2091 8 36 9.79086 36 12V14H44C46.2091 14 48 15.7909 48 18V48C48 50.2091 46.2091 52 44 52H12C9.79086 52 8 50.2091 8 48V12C8 9.79086 9.79086 8 12 8Z' fill='%23d8775722'/%3E%3Crect x='18' y='22' width='20' height='3' rx='1.5' fill='%230a0a0a11'/%3E%3Crect x='18' y='30' width='14' height='3' rx='1.5' fill='%230a0a0a11'/%3E%3Crect x='18' y='38' width='3' height='3' rx='1.5' fill='%230a0a0a08'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+/* Hide background when editors are open */
+.theia-dock-panel .p-Widget {
+    background: var(--theia-editor-background);
+}
+
+/* ========================================
+   Welcome Widget Styles (fallback)
+   ======================================== */
+
+.folio-welcome-widget {
+    width: 100%;
+    height: 100%;
+    background: var(--theia-editor-background);
+}
+
+.folio-welcome-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.folio-welcome-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Logo + Wordmark horizontal layout */
+.folio-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+}
+
+.folio-logo {
+    flex-shrink: 0;
+}
+
+.folio-wordmark {
+    font-family: 'Baskerville', 'Libre Baskerville', 'Georgia', serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--theia-foreground);
+    letter-spacing: -0.01em;
+}
+
+/* Tagline */
+.folio-tagline {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--theia-descriptionForeground);
+    font-weight: 400;
+}
+
+/* Shortcuts section */
+.folio-shortcuts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin-top: 0.5rem;
+}
+
+.folio-shortcut {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.folio-shortcut-label {
+    font-size: 0.8125rem;
+    color: var(--theia-descriptionForeground);
+}
+
+/* Keyboard shortcut group */
+.folio-kbd-group {
+    display: flex;
+    gap: 0.25rem;
+}
+
+/* Individual keyboard keys - Claude-style */
+.folio-kbd {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--theia-foreground);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}

@@ -1,6 +1,6 @@
 <svg id="logoSvg" width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
           <!-- Abstract F that's also a folder tab -->
-          <path id="folderBody" d="M12 8H32C34.2091 8 36 9.79086 36 12V14H44C46.2091 14 48 15.7909 48 18V48C48 50.2091 46.2091 52 44 52H12C9.79086 52 8 50.2091 8 48V12C8 9.79086 9.79086 8 12 8Z" fill="#f0efed"></path>
+          <path id="folderBody" d="M12 8H32C34.2091 8 36 9.79086 36 12V14H44C46.2091 14 48 15.7909 48 18V48C48 50.2091 46.2091 52 44 52H12C9.79086 52 8 50.2091 8 48V12C8 9.79086 9.79086 8 12 8Z" fill="#d87757"></path>
           <!-- Document line 1 -->
           <rect id="fTop" x="18" y="22" width="20" height="3" rx="1.5" fill="#0a0a0a"></rect>
           <!-- Document line 2 -->

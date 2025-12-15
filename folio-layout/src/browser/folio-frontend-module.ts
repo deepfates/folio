@@ -1,3 +1,4 @@
+import './style/index.css';
 import { ContainerModule } from '@theia/core/shared/inversify';
 import { ClaudeAutoOpenContribution } from './claude-auto-open';
 import { FrontendApplicationContribution, WidgetFactory } from '@theia/core/lib/browser';
