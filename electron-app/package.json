@@ -1,11 +1,15 @@
 {
   "private": true,
-  "name": "electron-app",
+  "name": "folio-app",
+  "productName": "Folio",
   "version": "0.0.0",
+  "description": "A folder-based IDE powered by Claude",
+  "author": "deepfates",
   "main": "lib/backend/electron-main.js",
   "dependencies": {
     "@theia/bulk-edit": "1.67.0",
     "@theia/core": "1.67.0",
+    "@theia/debug": "1.67.0",
     "@theia/editor": "1.67.0",
     "@theia/editor-preview": "1.67.0",
     "@theia/electron": "1.67.0",
@@ -21,13 +25,15 @@
     "@theia/plugin-ext-vscode": "1.67.0",
     "@theia/preview": "1.67.0",
     "@theia/process": "1.67.0",
+    "@theia/scm": "1.67.0",
     "@theia/search-in-workspace": "1.67.0",
     "@theia/terminal": "1.67.0",
+    "@theia/test": "1.67.0",
     "@theia/timeline": "1.67.0",
     "@theia/userstorage": "1.67.0",
     "@theia/vsx-registry": "1.67.0",
     "@theia/workspace": "1.67.0",
-    "folio": "0.0.0"
+    "folio-layout": "0.0.0"
   },
   "devDependencies": {
     "@theia/cli": "1.67.0",
@@ -86,9 +92,42 @@
           "editor.wordWrap": "on",
           "editor.autoSave": "afterDelay",
           "editor.autoSaveDelay": 1000,
-          "window.titleBarStyle": "native"
+          "window.titleBarStyle": "native",
+          "scm.defaultViewMode": "tree",
+          "debug.openDebug": "neverOpen",
+          "debug.toolBarLocation": "hidden"
         }
       }
+    }
+  },
+  "build": {
+    "appId": "com.deepfates.folio",
+    "productName": "Folio",
+    "directories": {
+      "buildResources": "resources"
+    },
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "resources/icon.png",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "resources/icon.png"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "icon": "resources/icon.png",
+      "category": "Development"
     }
   }
 }

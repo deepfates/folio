@@ -11,12 +11,12 @@
     "postinstall": "theia check:theia-version",
     "start:electron": "npm --prefix electron-app start",
     "watch:electron": "lerna run --parallel watch --ignore browser-app",
-    "test": "cd folio && npm test"
+    "test": "cd folio-layout && npm test"
   },
   "devDependencies": {
     "lerna": "2.4.0"
   },
   "workspaces": [
-    "folio", "browser-app", "electron-app"
+    "folio-layout", "browser-app", "electron-app"
   ]
 }
