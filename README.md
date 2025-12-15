@@ -1,90 +1,36 @@
-# folio
-The example of how to build the Theia-based applications with the folio.
+# Folio
 
-## Getting started
+**Claude in your folder.**
 
-Please install all necessary [prerequisites](https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites).
+## What is this?
 
-## Running the browser example
+A workspace where you and Claude collaborate on files together. Built for knowledge workers—if you work with documents, notes, PDFs, and research, this is for you.
 
-    npm run build:browser
-    npm run start:browser
+## Getting Started
 
-*or:*
+Download the latest release for macOS/Windows/Linux (coming soon).
 
-    npm run build:browser
-    cd browser-app
-    npm start
+Open Folio, point it at a folder, start chatting with Claude.
 
-*or:* launch `Start Browser Backend` configuration from VS code.
+## How it works
 
-Open http://localhost:3000 in the browser.
+- **Claude Code extension** provides the AI integration
+- **Chat with Claude** in the sidebar
+- **Claude can read and edit** files in your folder
+- **Files are how you collaborate**—everything stays visible and in your control
 
-## Running the Electron example
+## Why Folio?
 
-    npm run build:electron
-    npm run start:electron
+The folder is your shared workspace. Files are edge objects that let you and Claude work together—synchronously in chat, or asynchronously through the file system.
 
-*or:*
+No hidden state. No proprietary formats. Just you, Claude, and your files.
 
-    npm run build:electron
-    cd electron-app
-    npm start
+For the full vision and philosophy, see [PHILOSOPHY.md](PHILOSOPHY.md).
 
-*or:* launch `Start Electron Backend` configuration from VS code.
+## For Developers
 
+Built on [Eclipse Theia](https://theia-ide.org/). See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup.
 
-## Running the tests
+## License
 
-    npm test
-
-*or* run the tests of a specific package with
-
-    cd folio
-    npm test
-
-
-## Developing with the browser example
-
-Start watching all packages, including `browser-app`, of your application with
-
-    npm run watch:browser
-
-*or* watch only specific packages with
-
-    cd folio
-    npm run watch
-
-and the browser example.
-
-    cd browser-app
-    npm run watch
-
-Run the example as [described above](#Running-the-browser-example)
-## Developing with the Electron example
-
-Start watching all packages, including `electron-app`, of your application with
-
-    npm run watch:electron
-
-*or* watch only specific packages with
-
-    cd folio
-    npm run watch
-
-and the Electron example.
-
-    cd electron-app
-    npm run watch
-
-Run the example as [described above](#Running-the-Electron-example)
-
-## Publishing folio
-
-Create a npm user and login to the npm registry, [more on npm publishing](https://docs.npmjs.com/getting-started/publishing-npm-packages).
-
-    npm login
-
-Publish packages with lerna to update versions properly across local packages, [more on publishing with lerna](https://github.com/lerna/lerna#publish).
-
-    npx lerna publish
+MIT
