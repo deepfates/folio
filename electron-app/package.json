@@ -21,6 +21,7 @@
     "@theia/plugin-ext-vscode": "1.67.0",
     "@theia/preview": "1.67.0",
     "@theia/process": "1.67.0",
+    "@theia/search-in-workspace": "1.67.0",
     "@theia/terminal": "1.67.0",
     "@theia/timeline": "1.67.0",
     "@theia/userstorage": "1.67.0",
@@ -32,12 +33,13 @@
     "@theia/cli": "1.67.0",
     "electron": "38.4.0"
   },
-  "scripts": {
-    "bundle": "npm run rebuild && theia build --mode development",
+"scripts": {
+    "bundle": "yarn run rebuild && yarn run download:plugins && theia build --mode development",
     "rebuild": "theia rebuild:electron --cacheRoot ..",
-    "start": "theia start",
-    "watch": "npm run rebuild && theia build --watch --mode development"
-  },
+    "start": "theia start --plugins=local-dir:plugins",
+    "watch": "yarn run rebuild && yarn run download:plugins && theia build --watch --mode development",
+    "download:plugins": "theia download:plugins"
+},
   "theiaPluginsDir": "plugins",
   "theiaPlugins": {
     "vscode.git": "https://open-vsx.org/api/vscode/git/1.95.3/file/vscode.git-1.95.3.vsix",
@@ -54,6 +56,7 @@
     "vscode.markdown": "https://open-vsx.org/api/vscode/markdown/1.95.3/file/vscode.markdown-1.95.3.vsix",
     "vscode.markdown-language-features": "https://open-vsx.org/api/vscode/markdown-language-features/1.95.3/file/vscode.markdown-language-features-1.95.3.vsix",
     "vscode.python": "https://open-vsx.org/api/vscode/python/1.95.3/file/vscode.python-1.95.3.vsix",
+    "vscode.shellscript": "https://open-vsx.org/api/vscode/shellscript/1.95.3/file/vscode.shellscript-1.95.3.vsix",
     "vscode.typescript": "https://open-vsx.org/api/vscode/typescript/1.95.3/file/vscode.typescript-1.95.3.vsix",
     "vscode.typescript-language-features": "https://open-vsx.org/api/vscode/typescript-language-features/1.95.3/file/vscode.typescript-language-features-1.95.3.vsix",
     "vscode.xml": "https://open-vsx.org/api/vscode/xml/1.95.3/file/vscode.xml-1.95.3.vsix",
@@ -61,15 +64,16 @@
     "zaaack.markdown-editor": "https://open-vsx.org/api/zaaack/markdown-editor/0.1.9/file/zaaack.markdown-editor-0.1.9.vsix",
     "robole.marky-stats": "https://open-vsx.org/api/robole/marky-stats/0.11.0/file/robole.marky-stats-0.11.0.vsix",
     "mechatroner.rainbow-csv": "https://open-vsx.org/api/mechatroner/rainbow-csv/3.3.0/file/mechatroner.rainbow-csv-3.3.0.vsix",
-    "castrogusttavo.symbols": "https://open-vsx.org/api/castrogusttavo/symbols/0.0.18/file/castrogusttavo.symbols-0.0.18.vsix",
-    "wilfriedago.vscode-symbols-icon-theme": "https://open-vsx.org/api/wilfriedago/vscode-symbols-icon-theme/0.0.1/file/wilfriedago.vscode-symbols-icon-theme-0.0.1.vsix",
     "dez64ru.macos-modern-theme": "https://open-vsx.org/api/dez64ru/macos-modern-theme/2.3.18/file/dez64ru.macos-modern-theme-2.3.18.vsix",
     "vscode.image-preview": "https://open-vsx.org/api/vscode/image-preview/1.70.2/file/vscode.image-preview-1.70.2.vsix",
     "vscode.media-preview": "https://open-vsx.org/api/vscode/media-preview/1.95.3/file/vscode.media-preview-1.95.3.vsix",
-    "foam.foam-vscode": "https://open-vsx.org/api/foam/foam-vscode/0.29.1/file/foam.foam-vscode-0.29.1.vsix",
-    "Anthropic/claude-code": "https://open-vsx.org/api/Anthropic/claude-code/2.0.62/file/Anthropic.claude-code-2.0.62.vsix",
-    "jnahian/jnahian-claude-theme": "https://open-vsx.org/api/jnahian/jnahian-claude-theme/0.2.0/file/jnahian.jnahian-claude-theme-0.2.0.vsix",
-    "LaurentTreguier/vscode-simple-icons": "https://open-vsx.org/api/LaurentTreguier/vscode-simple-icons/1.16.0/file/LaurentTreguier.vscode-simple-icons-1.16.0.vsix"
+    "Anthropic.claude-code": "https://open-vsx.org/api/Anthropic/claude-code/darwin-arm64/2.0.62/file/Anthropic.claude-code-2.0.62@darwin-arm64.vsix",
+    "jnahian.jnahian-claude-theme": "https://open-vsx.org/api/jnahian/jnahian-claude-theme/0.2.0/file/jnahian.jnahian-claude-theme-0.2.0.vsix",
+    "LaurentTreguier.vscode-simple-icons": "https://open-vsx.org/api/LaurentTreguier/vscode-simple-icons/1.16.0/file/LaurentTreguier.vscode-simple-icons-1.16.0.vsix",
+    "fermelone.simple-browser-multi": "https://open-vsx.org/api/fermelone/simple-browser-multi/1.0.3/file/fermelone.simple-browser-multi-1.0.3.vsix",
+    "nick-rudenko.back-n-forth": "https://open-vsx.org/api/nick-rudenko/back-n-forth/3.1.1/file/nick-rudenko.back-n-forth-3.1.1.vsix",
+    "tomoki1207.pdf": "https://open-vsx.org/api/tomoki1207/pdf/1.2.2/file/tomoki1207.pdf-1.2.2.vsix",
+    "tldraw-org.tldraw-vscode": "https://open-vsx.org/api/tldraw-org/tldraw-vscode/2.190.11/file/tldraw-org.tldraw-vscode-2.190.11.vsix"
   },
   "theia": {
     "target": "electron",
