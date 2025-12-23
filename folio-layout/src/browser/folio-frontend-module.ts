@@ -7,6 +7,7 @@ import { SearchInWorkspaceFrontendContribution } from '@theia/search-in-workspac
 import { RightSideFileNavigatorContribution, RightSideSearchContribution } from './right-sidebar-contributions';
 import { FolioWelcomeWidget } from './folio-welcome-widget';
 import { FolioWelcomeContribution } from './folio-welcome-contribution';
+import { DefaultWorkspaceContribution } from './default-workspace-contribution';
 
 // Import original contributions for rebinding
 import { VSXExtensionsContribution } from '@theia/vsx-registry/lib/browser/vsx-extensions-contribution';
@@ -51,6 +52,10 @@ export default new ContainerModule((bind, unbind, isBound, rebind) => {
     // ===== Auto-open Claude panel on first launch =====
     bind(ClaudeAutoOpenContribution).toSelf().inSingletonScope();
     bind(FrontendApplicationContribution).toService(ClaudeAutoOpenContribution);
+
+    // ===== Create and open default ~/Folio workspace on first launch =====
+    bind(DefaultWorkspaceContribution).toSelf().inSingletonScope();
+    bind(FrontendApplicationContribution).toService(DefaultWorkspaceContribution);
 
     // ===== Move Navigator (Explorer) to right sidebar =====
     bind(RightSideFileNavigatorContribution).toSelf().inSingletonScope();
