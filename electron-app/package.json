@@ -6,10 +6,20 @@
   "description": "A folder-based IDE powered by Claude",
   "author": "deepfates",
   "main": "lib/backend/electron-main.js",
+  "scripts": {
+    "bundle": "yarn run rebuild && yarn run download:plugins && theia build --mode development",
+    "rebuild": "theia rebuild:electron --cacheRoot ..",
+    "start": "theia start --plugins=local-dir:plugins",
+    "watch": "yarn run rebuild && yarn run download:plugins && theia build --watch --mode development",
+    "download:plugins": "theia download:plugins && ../scripts/patch-extensions.sh",
+    "package": "yarn bundle && electron-builder --mac --dir",
+    "package:dmg": "yarn bundle && electron-builder --mac dmg",
+    "package:dist": "yarn bundle && electron-builder --mac",
+    "generate:icons": "../scripts/generate-icons.sh"
+},
   "dependencies": {
     "@theia/bulk-edit": "1.67.0",
     "@theia/core": "1.67.0",
-    "@theia/debug": "1.67.0",
     "@theia/editor": "1.67.0",
     "@theia/editor-preview": "1.67.0",
     "@theia/electron": "1.67.0",
@@ -25,7 +35,6 @@
     "@theia/plugin-ext-vscode": "1.67.0",
     "@theia/preview": "1.67.0",
     "@theia/process": "1.67.0",
-    "@theia/scm": "1.67.0",
     "@theia/search-in-workspace": "1.67.0",
     "@theia/terminal": "1.67.0",
     "@theia/test": "1.67.0",
@@ -40,20 +49,9 @@
     "electron": "38.4.0",
     "electron-builder": "^25.1.8"
   },
-"scripts": {
-    "bundle": "yarn run rebuild && yarn run download:plugins && theia build --mode development",
-    "rebuild": "theia rebuild:electron --cacheRoot ..",
-    "start": "theia start --plugins=local-dir:plugins",
-    "watch": "yarn run rebuild && yarn run download:plugins && theia build --watch --mode development",
-    "download:plugins": "theia download:plugins",
-    "package": "yarn bundle && electron-builder --mac --dir",
-    "package:dmg": "yarn bundle && electron-builder --mac dmg",
-    "package:dist": "yarn bundle && electron-builder --mac"
-},
+
   "theiaPluginsDir": "plugins",
   "theiaPlugins": {
-    "vscode.git": "https://open-vsx.org/api/vscode/git/1.95.3/file/vscode.git-1.95.3.vsix",
-    "vscode.merge-conflict": "https://open-vsx.org/api/vscode/merge-conflict/1.95.3/file/vscode.merge-conflict-1.95.3.vsix",
     "vscode.configuration-editing": "https://open-vsx.org/api/vscode/configuration-editing/1.95.3/file/vscode.configuration-editing-1.95.3.vsix",
     "vscode.search-result": "https://open-vsx.org/api/vscode/search-result/1.95.3/file/vscode.search-result-1.95.3.vsix",
     "vscode.css": "https://open-vsx.org/api/vscode/css/1.95.3/file/vscode.css-1.95.3.vsix",
@@ -97,9 +95,8 @@
           "editor.autoSave": "afterDelay",
           "editor.autoSaveDelay": 1000,
           "window.titleBarStyle": "native",
-          "scm.defaultViewMode": "tree",
-          "debug.openDebug": "neverOpen",
-          "debug.toolBarLocation": "hidden"
+          "security.workspace.trust.enabled": false,
+          "claudeCode.preferredLocation": "sidebar"
         }
       }
     }
@@ -107,12 +104,24 @@
   "build": {
     "appId": "com.deepfates.folio",
     "productName": "Folio",
+    "extraResources": [
+      {
+        "from": "plugins",
+        "to": "plugins",
+        "filter": ["**/*"]
+      }
+    ],
     "directories": {
       "buildResources": "electron-app/resources"
     },
     "mac": {
       "category": "public.app-category.developer-tools",
       "icon": "electron-app/resources/icon.icns",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "entitlements.mac.plist",
+      "entitlementsInherit": "entitlements.mac.plist",
+      "notarize": true,
       "target": [
         "dmg",
         "zip"
