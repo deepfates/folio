@@ -34,7 +34,8 @@
   "theiaExtensions": [
     {
       "frontend": "lib/browser/folio-frontend-module",
-      "frontendOnlyStyle": "src/browser/style/index.css"
+      "frontendOnlyStyle": "src/browser/style/index.css",
+      "backend": "lib/node/folio-backend-module"
     }
   ]
 }
