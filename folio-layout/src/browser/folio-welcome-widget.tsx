@@ -41,7 +41,7 @@ export class FolioWelcomeWidget extends ReactWidget {
                     </div>
 
                     {/* Tagline */}
-                    <p className="folio-tagline">Share your computer with Claude</p>
+                    <p className="folio-tagline">Share your folder with Claude</p>
 
                     {/* Shortcuts */}
                     <div className="folio-shortcuts">
