@@ -8,13 +8,14 @@
   "main": "lib/backend/electron-main.js",
   "scripts": {
     "bundle": "yarn run rebuild && yarn run download:plugins && theia build --mode development",
+    "bundle:prod": "yarn run rebuild && yarn run download:plugins && theia build --mode production",
     "rebuild": "theia rebuild:electron --cacheRoot ..",
     "start": "theia start --plugins=local-dir:plugins",
     "watch": "yarn run rebuild && yarn run download:plugins && theia build --watch --mode development",
     "download:plugins": "theia download:plugins && ../scripts/patch-extensions.sh",
     "package": "yarn bundle && electron-builder --mac --dir",
-    "package:dmg": "yarn bundle && electron-builder --mac dmg",
-    "package:dist": "yarn bundle && electron-builder --mac",
+    "package:dmg": "yarn bundle:prod && electron-builder --mac dmg",
+    "package:dist": "yarn bundle:prod && electron-builder --mac",
     "generate:icons": "../scripts/generate-icons.sh"
 },
   "dependencies": {
@@ -80,8 +81,7 @@
     "LaurentTreguier.vscode-simple-icons": "https://open-vsx.org/api/LaurentTreguier/vscode-simple-icons/1.16.0/file/LaurentTreguier.vscode-simple-icons-1.16.0.vsix",
     "fermelone.simple-browser-multi": "https://open-vsx.org/api/fermelone/simple-browser-multi/1.0.3/file/fermelone.simple-browser-multi-1.0.3.vsix",
     "nick-rudenko.back-n-forth": "https://open-vsx.org/api/nick-rudenko/back-n-forth/3.1.1/file/nick-rudenko.back-n-forth-3.1.1.vsix",
-    "tomoki1207.pdf": "https://open-vsx.org/api/tomoki1207/pdf/1.2.2/file/tomoki1207.pdf-1.2.2.vsix",
-    "tldraw-org.tldraw-vscode": "https://open-vsx.org/api/tldraw-org/tldraw-vscode/2.190.11/file/tldraw-org.tldraw-vscode-2.190.11.vsix"
+    "tomoki1207.pdf": "https://open-vsx.org/api/tomoki1207/pdf/1.2.2/file/tomoki1207.pdf-1.2.2.vsix"
   },
   "theia": {
     "target": "electron",
@@ -104,6 +104,9 @@
   "build": {
     "appId": "com.deepfates.folio",
     "productName": "Folio",
+    "asar": {
+      "smartUnpack": true
+    },
     "extraResources": [
       {
         "from": "plugins",
@@ -121,7 +124,9 @@
       "gatekeeperAssess": false,
       "entitlements": "entitlements.mac.plist",
       "entitlementsInherit": "entitlements.mac.plist",
-      "notarize": true,
+      "notarize": {
+        "teamId": "${env.APPLE_TEAM_ID}"
+      },
       "target": [
         "dmg",
         "zip"
