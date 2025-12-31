@@ -7,8 +7,8 @@
   "author": "deepfates",
   "main": "lib/backend/electron-main.js",
   "scripts": {
-    "bundle": "yarn run rebuild && yarn run download:plugins && theia build --mode development",
-    "bundle:prod": "yarn run rebuild && yarn run download:plugins && theia build --mode production",
+    "bundle": "yarn run rebuild && yarn run download:plugins && theia build --mode development && node ../scripts/copy-spawn-helper.js",
+    "bundle:prod": "yarn run rebuild && yarn run download:plugins && theia build --mode production && node ../scripts/copy-spawn-helper.js",
     "rebuild": "theia rebuild:electron --cacheRoot ..",
     "start": "theia start --plugins=local-dir:plugins",
     "watch": "yarn run rebuild && yarn run download:plugins && theia build --watch --mode development",
@@ -21,6 +21,7 @@
   "dependencies": {
     "@theia/bulk-edit": "1.67.0",
     "@theia/core": "1.67.0",
+    "@theia/debug": "1.67.0",
     "@theia/editor": "1.67.0",
     "@theia/editor-preview": "1.67.0",
     "@theia/electron": "1.67.0",
@@ -36,6 +37,7 @@
     "@theia/plugin-ext-vscode": "1.67.0",
     "@theia/preview": "1.67.0",
     "@theia/process": "1.67.0",
+    "@theia/scm": "1.67.0",
     "@theia/search-in-workspace": "1.67.0",
     "@theia/terminal": "1.67.0",
     "@theia/test": "1.67.0",
@@ -114,13 +116,19 @@
         "filter": ["**/*"]
       }
     ],
+    "extraFiles": [
+      {
+        "from": "../node_modules/node-pty/build/Release/spawn-helper",
+        "to": "Resources/app.asar.unpacked/lib/build/Release/spawn-helper"
+      }
+    ],
     "directories": {
       "buildResources": "electron-app/resources"
     },
     "mac": {
       "category": "public.app-category.developer-tools",
       "icon": "electron-app/resources/icon.icns",
-      "hardenedRuntime": true,
+      "hardenedRuntime": false,
       "gatekeeperAssess": false,
       "entitlements": "entitlements.mac.plist",
       "entitlementsInherit": "entitlements.mac.plist",
