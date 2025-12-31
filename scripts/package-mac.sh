@@ -14,6 +14,12 @@ NC='\033[0m' # No Color
 echo -e "${BLUE}Folio DMG Packaging Tool${NC}"
 echo "--------------------------"
 
+# Source .env.local if it exists
+if [ -f ".env.local" ]; then
+    echo -e "${GREEN}Loading credentials from .env.local${NC}"
+    source .env.local
+fi
+
 # Check if environment variables are set, otherwise prompt (without exporting sensitive data permanently)
 if [ -z "$APPLE_ID" ]; then
     read -p "Enter your Apple ID: " APPLE_ID

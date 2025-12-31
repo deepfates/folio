@@ -5,3 +5,4 @@ lib
 *-app/*
 !*-app/package.json
 !*-app/entitlements.mac.plist
+.env.local
