@@ -126,7 +126,7 @@
     "mac": {
       "category": "public.app-category.developer-tools",
       "icon": "electron-app/resources/icon.icns",
-      "hardenedRuntime": false,
+      "hardenedRuntime": true,
       "gatekeeperAssess": false,
       "entitlements": "entitlements.mac.plist",
       "entitlementsInherit": "entitlements.mac.plist",
